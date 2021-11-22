@@ -1,11 +1,7 @@
 import React, { Fragment } from 'react'
-import { MenuItem } from '../MenuItem'
 import { Editor } from '@tiptap/react'
-
-import {
-    EditorHeader,
-    Divider
-} from './styles' 
+import { MenuItem } from '../MenuItem'
+import { EditorHeader, Divider } from './styles' 
 
 
 const ColorPicker = ({ editor }: { editor: Editor }) => (
@@ -148,6 +144,12 @@ export const MenuBar = ({ editor }) => {
         isActive: editor.isActive({ textAlign: 'justify' }),
     }, {
         type: 'divider',
+    },{
+        icon: 'emoji',
+        title: 'Emoji',
+        action: () =>  editor.chain().focus().setEmoji('zap').run(),
+        isActive: () => editor.isActive('emoji'),
+        isDisabled: () => { return false; },
     }, {
         icon: 'link',
         title: 'Link',
